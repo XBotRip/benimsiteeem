@@ -1,0 +1,213 @@
+/* Temel stil */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    background: linear-gradient(120deg, #0a0a0a, #1b001b, #0a0a0a);
+    background-size: 400% 400%;
+    animation: bgmove 25s ease infinite;
+}
+@keyframes bgmove {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* Menü */
+nav {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    z-index: 100;
+}
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.3rem;
+    padding: 10px 25px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    position: relative;
+}
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 3px;
+    background: #ff00ff;
+    left: 0;
+    bottom: -5px;
+    transition: 0.4s;
+    border-radius: 2px;
+}
+nav a:hover::after { width: 100%; }
+nav a:hover { transform: scale(1.1) translateY(-2px); }
+
+/* Bölümler */
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    padding: 50px 20px;
+    z-index: 2;
+}
+
+/* Neon dalgalanan yazılar */
+.animated-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    animation: wave 2s ease-in-out infinite alternate, glow 2s ease-in-out infinite alternate;
+    text-align: center;
+}
+@keyframes wave {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #fff;}
+    50% { text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff;}
+    100% { text-shadow: 0 0 5px #fff;}
+}
+
+/* Hakkımda paragraf */
+.about-text {
+    margin-top: 25px;
+    max-width: 700px;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #fff;
+    opacity: 0.9;
+    animation: glow 3s ease-in-out infinite alternate;
+}
+
+/* Sosyal linkler ve dostlar */
+.animated-link {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(5px);
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(255,255,255,0.1);
+}
+.animated-link:hover {
+    transform: scale(1.15) rotate(-1deg);
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 25px #ff00ff;
+}
+
+/* Dostlar düzeni */
+.dostlar-container {
+    display: flex;
+    justify-content: center;
+    gap: 120px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+.dost-sutun {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.dost-satir {
+    display: flex;
+    gap: 20px;
+}
+
+/* Floating dekoratif daireler ve yıldızlar */
+.floating-circle, .floating-star {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    animation: floatmove linear infinite;
+}
+.floating-star {
+    width: 5px;
+    height: 5px;
+    background: rgba(255,255,255,0.3);
+}
+@keyframes floatmove {
+    0% {transform: translateY(0px);}
+    50% {transform: translateY(-30px);}
+    100% {transform: translateY(0px);}
+}
+
+/* Roblox karakter arka plan */
+.roblox-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 0;
+    width: 600px;
+    height: auto;
+    animation: float 25s ease-in-out infinite alternate;
+}
+.roblox-bg img { width: 100%; height: auto; }
+@keyframes float { 0% {transform: translate(-50%, -50%) translateY(0px);} 50% {transform: translate(-50%, -50%) translateY(-25px);} 100% {transform: translate(-50%, -50%) translateY(0px);} }
+
+/* Müzik çalar */
+#music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 220px;
+    height: 50px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    box-shadow: 0 4px 20px rgba(255,0,255,0.2);
+    z-index: 100;
+}
+#music-player:hover { transform: scale(1.05); }
+#music-controls { display: flex; align-items: center; gap: 10px; }
+#music-controls button {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 10px;
+    padding: 5px 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+#music-controls button:hover {
+    background: rgba(255,255,255,0.35);
+    transform: scale(1.2);
+}
+#music-controls input[type=range] { width: 100px; }
+
+/* Hover animasyonlu glow */
+.animated-link, .dost-satir a {
+    transition: all 0.4s ease;
+}
+.animated-link:hover, .dost-satir a:hover {
+    box-shadow: 0 0 20px #ff00ff;
+    transform: scale(1.15) translateY(-2px);
+}
